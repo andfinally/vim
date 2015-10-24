@@ -11,6 +11,9 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'mattn/emmet-vim'
 Bundle 'itchyny/lightline.vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'Townk/vim-autoclose'
+Bundle 'edsono/vim-matchit'
+Bundle 'tomtom/tcomment_vim'
 
 filetype on
 
@@ -71,6 +74,9 @@ set ignorecase			" ignore case in search
 set smartcase			" except if you use uppercase
 set hlsearch            " highlight matches
 
+" Files to ignore on OSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     
+
 " ========== Key mappings ==========
 
 " move vertically by visual line
@@ -79,6 +85,9 @@ nnoremap k gk
 
 " jk is escape
 inoremap jk <esc>
+
+" Leader
+:let mapleader=","
 
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -129,6 +138,18 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'ra'
 
+" ========== Lightline ==========
 
+" Show path in Lightline status bar
+" absolute - expand('%:p:h')
+" relative - expand('%')
+let g:lightline = {
+	\ 'component_function': {
+	\   'filename': 'LightLineFilename'
+	\ }
+	\ }
+function! LightLineFilename()
+	return expand('%:p:h')
+endfunction
