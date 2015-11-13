@@ -66,6 +66,9 @@ set autoindent			" Who doesn't like autoindent?
 nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
 
+" Seems necessary for some autoindent to work
+filetype indent on
+
 " ========== Search ==========
 
 set showmatch           " highlight matching [{()}]
@@ -133,6 +136,9 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
   call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
   call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
   call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+
+" Close NERDTree if it's the last open buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " ========== CtrlP ==========
 
