@@ -8,4 +8,4 @@ Vim config
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
     ~/.vim/bin/install
 
-May need to run :BundleInstall, :BundleUpdate or :BundleClean for Vundle packages
+Start Vim and run :BundleInstall and :BundleUpdate for Vundle packages
